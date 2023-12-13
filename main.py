@@ -1,4 +1,3 @@
-# Import necessary libraries
 import keyboard
 from PIL import ImageGrab
 import pytesseract
@@ -84,7 +83,6 @@ async def process_text_gpt3(salt):
         print("Error:", e)
 
 
-# Function to process text using GPT-3 for programming-related content
 async def process_text_gpt_programming(salt):
     try:
         print(".")
@@ -100,6 +98,7 @@ async def process_text_gpt_programming(salt):
     except Exception as e:
         print("Error:", e)
 
+# Add hotkeys
 keyboard.add_hotkey('ctrl+alt+1', lambda: asyncio.run(process_text_gpt_programming("This is a text from the screenshot of a programming exam, it's in the Slovak language. There is also text from other stuff than the exam; ignore it. Reply with code written in C++. Do not write anything unnecessary: ")))
 keyboard.add_hotkey('ctrl+alt+4', lambda: asyncio.run(process_text_bing("This is a text from the screenshot of a programming exam, it's in the Slovak language. There is also text from other stuff than the exam; ignore it. Reply with code written in C++. Do not write anything unnecessary: ")))
 keyboard.add_hotkey('ctrl+alt+2', lambda: asyncio.run(process_text_gpt3("This is a text from the screenshot of a exam. There is also text from other stuff than the exam; ignore it. Provide only the correct answer in format §§answer§§ (for example if question is asking what is 2+2 you answer §§4§§, don not write anything unnecessary: ")))

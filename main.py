@@ -1,5 +1,5 @@
+# Import necessary libraries
 import keyboard
-import pyautogui
 from PIL import ImageGrab
 import pytesseract
 import pyperclip
@@ -7,6 +7,8 @@ import asyncio
 import g4f
 import re
 
+
+# Function to extract text between specific symbols from a string
 def extract_between_symbols(input_string):
     pattern1 = re.compile(r'§§(.*?)§§')
     pattern2 = re.compile(r'\*\*(.*?)\*\*')
@@ -21,16 +23,20 @@ def extract_between_symbols(input_string):
     else:
         return None
 
+
 # Set the path to the Tesseract OCR executable (change this based on your installation)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-# Specify your custom configuration
+# Specify your custom configuration for Tesseract OCR
 custom_config = r'--oem 3 --psm 6'
 
+
+# Function to set text to the clipboard
 def set_text_to_clipboard(text):
     pyperclip.copy(text)
 
+
+# Function to take a screenshot and extract text using Tesseract OCR
 def take_screenshot_and_extract_text():
-    text = ""
     try:
         # Take a screenshot directly into a PIL Image
         screenshot = ImageGrab.grab()
@@ -42,6 +48,8 @@ def take_screenshot_and_extract_text():
     except Exception as e:
         print("Error:", e)
 
+
+# Function to process text using GPT-4
 async def process_text_bing(salt):
     try:
         print(".")
@@ -57,6 +65,8 @@ async def process_text_bing(salt):
     except Exception as e:
         print("Error:", e)
 
+
+# Function to process text using GPT-3
 async def process_text_gpt3(salt):
     try:
         print(".")
@@ -73,6 +83,8 @@ async def process_text_gpt3(salt):
     except Exception as e:
         print("Error:", e)
 
+
+# Function to process text using GPT-3 for programming-related content
 async def process_text_gpt_programming(salt):
     try:
         print(".")
